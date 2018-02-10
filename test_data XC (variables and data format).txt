@@ -1,0 +1,18 @@
+Variables and data format
+/*    TICKER(L1),    A9,7X        1-9                          */
+/*    DATE(L1),      I10         17-26                         */
+/*    TIME(L1),      F15.6       27-41                         */
+/*    PRICE(L1),     F20.10      51-70                         */
+/*    VOL(L1),       I20         71-90                         */
+
+
+
+
+
+TICKER      Bucket size
+A             43959
+AAAP           1349
+AAC            2634
+
+
+
