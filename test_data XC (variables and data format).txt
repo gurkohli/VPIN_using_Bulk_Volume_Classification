@@ -13,6 +13,3 @@ TICKER      Bucket size
 A             43959
 AAAP           1349
 AAC            2634
-
-
-

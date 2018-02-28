@@ -12,6 +12,15 @@ def decimal_time_to_python_time(decimal_time):
 
     return time(hours, minutes, seconds)
 
+
+def python_time_to_decimal_time(python_time):
+    time = python_time.hour * 3600
+
+    time += python_time.minute * 60
+
+    time += python_time.second
+
+    return time
 # Assuming date_str -> YYYYMMDD
 def string_date_to_python_date(date_str):
     year = int(date_str[0:4])
@@ -20,15 +29,15 @@ def string_date_to_python_date(date_str):
 
     return date(year, month, day)
 
+# Round a datetime object to a multiple of a timedelta
+# https://stackoverflow.com/questions/3463930
+# dt : datetime.datetime object, default now.
+# dateDelta : timedelta object, we round to a multiple of this, default 1 minute.
+# Author: Thierry Husson 2012 - Use it as you want but don't blame me.
+#         Stijn Nevens 2014 - Changed to use only datetime objects as variables
+#         Gur Kohli 2017 - Changed to always round down
+#
 def round_time(dt=None, dateDelta=timedelta(minutes=1)):
-    """Round a datetime object to a multiple of a timedelta
-    https://stackoverflow.com/questions/3463930
-    dt : datetime.datetime object, default now.
-    dateDelta : timedelta object, we round to a multiple of this, default 1 minute.
-    Author: Thierry Husson 2012 - Use it as you want but don't blame me.
-            Stijn Nevens 2014 - Changed to use only datetime objects as variables
-            Gur Kohli 2017 - Changed to always round down
-    """
     roundTo = dateDelta.total_seconds()
 
     if dt == None : dt = datetime.now()
