@@ -45,3 +45,13 @@ def round_time(dt=None, dateDelta=timedelta(minutes=1)):
     # // is a floor division, not a comment on following line:
     rounding = seconds // roundTo * roundTo
     return dt + timedelta(0,rounding-seconds,-dt.microsecond)
+
+def extend_dict_of_arrays(dictA, dictB):
+    if len(dictA) == 0:
+        return dictB
+    if len(dictB) == 0:
+        return dictA
+    result = {}
+    for (key, value) in dictA.iteritems():
+        result[key] = value + dictB[key]
+    return result

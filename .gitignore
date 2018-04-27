@@ -1,2 +1,11 @@
 *.pdf
 *.xc
+.DS_Store
+data/*
+*.html
+*.png
+*.csv
+*.xlsx
+*.txt
+*.out
+*.pyc
