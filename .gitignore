@@ -9,3 +9,5 @@ data/*
 *.txt
 *.out
 *.pyc
+Trade by*
+*.zip
