@@ -11,14 +11,14 @@ import helpers
 import algorithm
 
 config = {
-    'DATA_DIR_PATH': os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data'),
-    'LOG_FILE_PATH': os.path.join(os.path.dirname(os.path.realpath(__file__)), 'logger.txt'),
-    'RESULTS_DIR_PATH': os.path.join(os.path.dirname(os.path.realpath(__file__)), 'results'),
+    'DATA_DIR_PATH': os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', 'data'),
+    'LOG_FILE_PATH': os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', 'logs.txt'),
+    'RESULTS_DIR_PATH': os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', 'results'),
     'TIME_BAR_SIZE': DT.timedelta(minutes=1), # 1 minute
     'VERBOSE': False,
     'VERBOSE_CSV_FILE_PREFIX': 'OTPT_',
     'VERBOSE_CSV_FILE_SUFFIX': '.out',
-    'VOLUME_DIR_PATH': os.path.join(os.path.dirname(os.path.realpath(__file__)), 'volume'),
+    'VOLUME_DIR_PATH': os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', 'volume'),
     'XA_DATE_LIMIT': DT.date(2010,01,01),
     'XB_DATE_LIMIT': DT.date(2015,07,01),
 }

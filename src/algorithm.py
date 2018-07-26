@@ -15,6 +15,7 @@ XB_DATE_LIMIT = DT.date(2015,07,01)
 
 DATA_DIR_PATH = None
 IS_STDEV_CALCULATION_AVERAGE = None
+LOG_FILE_PATH = None
 VOLUME_DIR_PATH = None
 VERBOSE_CSV_FILE_PREFIX = None
 VERBOSE_CSV_FILE_SUFFIX = None
@@ -28,6 +29,7 @@ def config(config):
 
     global DATA_DIR_PATH
     global IS_STDEV_CALCULATION_AVERAGE
+    global LOG_FILE_PATH
     global RESULTS_DIR_PATH
     global TIME_BAR_SIZE
     global VOLUME_DIR_PATH
@@ -38,6 +40,7 @@ def config(config):
 
     DATA_DIR_PATH = config['DATA_DIR_PATH']
     IS_STDEV_CALCULATION_AVERAGE = config['IS_STDEV_CALCULATION_AVERAGE']
+    LOG_FILE_PATH = config['LOG_FILE_PATH']
     RESULTS_DIR_PATH = config['RESULTS_DIR_PATH']
     VOLUME_DIR_PATH = config['VOLUME_DIR_PATH']
     VERBOSE_CSV_FILE_PREFIX = config['VERBOSE_CSV_FILE_PREFIX']
@@ -296,7 +299,16 @@ def algorithm(start_period, end_period):
 
         print 'Parsing data from file ' + data_filename + ': ',
         sys.stdout.flush()
-        parsed_data = parse_data(file, current_date)
+        try :
+            parsed_data = parse_data(file, current_date)
+        except IOError:
+            print(' Error!!!!')
+            print 'Error occured while parsing file. Logging filename and continuing to next file'
+            current_date_str = current_date.strftime('%Y%m%d');
+            writeOutputToFile({}, current_date_str, bucket_size_map)
+            with open(LOG_FILE_PATH, "a") as myfile:
+                myfile.write(data_filename + '\n')
+            continue
         print('Complete')
 
         print 'Aggregating Data: ',

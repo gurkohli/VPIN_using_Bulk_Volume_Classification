@@ -173,14 +173,6 @@ def algorithm(data, bucket_size, ticker):
     stdev = calculate_stdev(price_difference, volume_new)
     verbose_print('Complete')
 
-    if (ticker == 'A'):
-        print 'Logging DATA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
-        log = ''
-        for x in range(0, num_elements_new):
-            log += ticker + ',' + helpers.python_date_to_string_date(start_time[x]) + ',' + str(x) + ',' + str(price_difference[x]) + ',' + str(bucket_size) + '\n';
-        with open(LOG_FILE_PATH, "a") as myfile:
-            myfile.write(log)
-
     ## Classify buy / sell volume (loop)
     verbose_print('Classifying Volume: ', True)
     result = classify_buy_sell_volume(stdev, num_elements_new, bucket_size, price_difference, volume_new, num_trades_in_bar, start_time)
